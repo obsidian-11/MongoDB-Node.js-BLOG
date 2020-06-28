@@ -1,0 +1,24 @@
+<header>
+  <div class="logo">
+    <a href="/blogs">My Cool Blog!</a>
+  </div>
+  <nav>
+    <ul>
+      <li class="nav-item 
+      <% if(page_name == 'blogs-home') {%>
+        <%= "current-page" %>
+      <% } %>
+      "><a href="/blogs">Home</a></li>
+      <li class="nav-item
+      <% if(page_name == 'blogs-about') {%>
+        <%= "current-page" %>
+      <% } %>
+      "><a href="/blogs/about">About</a></li>
+      <li class="nav-item
+      <% if(page_name == 'blogs-create') {%>
+        <%= "current-page" %>
+      <% } %>
+      "><a href="/blogs/create">Create Blog</a></li>
+    </ul>
+  </nav>
+</header>
