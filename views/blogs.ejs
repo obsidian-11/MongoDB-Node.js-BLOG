@@ -5,6 +5,21 @@
 <body>
   <div class="container">
     <%- include('./partials/blogHeader') %>
+    <% if(blogs.length > 0){ %>
+    <% for (let index = 0; index < blogs.length; index++) { %>
+    <div class="blog">
+      <div class="blog-title">
+        <%= blogs[index].title %>
+      </div>
+      <div class="blog-snippet">
+        <%= blogs[index].snippet %>
+      </div>
+      <a href="/blogs/<%= blogs[index].id %> " class="read-more-link">Read more</a>
+    </div>
+    <% } %>
+    <% } else{ %>
+    <%= 'NO BLOGS AVAILABLE' %>
+    <% } %>
   </div>
 </body>
 

@@ -11,9 +11,9 @@
         <form class="create-blog-form" action="/blogs/create" method="POST">
 
             <h1 class="form-heading">New Blog</h1>
-            <input name="title" type="text" class="form-input" placeholder="Title">
-            <input name="snippet" type="text" class="form-input" placeholder="Snippet">
-            <textarea rows="5" name="body" placeholder="Body"></textarea>
+            <input required name="title" type="text" class="form-input" placeholder="Title">
+            <input required name="snippet" type="text" class="form-input" placeholder="Snippet">
+            <textarea required rows="5" name="body" placeholder="Body"></textarea>
             <input class="form-submit" type="submit" value="Submit">
 
         </form>

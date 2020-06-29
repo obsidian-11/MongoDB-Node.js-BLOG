@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 const Blog = require('../models/Blog');
 
 const blog_index = (req, res) => {
-    res.render("blogs.ejs", {
-        title: '| Home',
-        page_name: 'blogs-home'
+    Blog.find({}, (err, docs) => {
+        if (err) throw err;
+        res.render("blogs.ejs", {
+            title: '| Home',
+            page_name: 'blogs-home',
+            blogs: docs
+        });
     });
 }
 
@@ -24,7 +28,6 @@ const blog_create_post = (req, res) => {
     });
     newBlog.save((err, doc) => {
         if (err) throw err;
-        console.log(doc);
         res.redirect('/blogs')
     });
 }

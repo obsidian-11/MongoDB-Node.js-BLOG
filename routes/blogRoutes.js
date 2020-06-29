@@ -9,24 +9,3 @@ router.get("/create", blogController.blog_create_get);
 router.post('/create', blogController.blog_create_post);
 
 module.exports = router;
-
-
-
-
-
-
-
-// EJS
-
-// ----- FOR LOOP - DISPLAY BLOGS 
-// <% for (let index = 0; index < blogs.length; index++) { %>
-//   <div class="blog">
-//     <div class="blog-title">
-//       <%= blogs[index].title %>
-//     </div>
-//     <div class="blog-snippet">
-//       <%= blogs[index].snippet %>
-//     </div>
-//     <a href="/blogs/<%= blogs[index].id %> " class="read-more-link">Read more</a>
-//   </div>
-//   <% } %>
