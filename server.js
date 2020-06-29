@@ -1,4 +1,5 @@
 // =============== DEPENDENCIES ======================================
+const bodyParser = require('body-parser');
 const express = require("express");
 const blogRoutes = require("./routes/blogRoutes");
 const path = require('path');
@@ -22,7 +23,10 @@ mongoose.connect(process.env.MONGO_URI, {
   .catch(err => console.log(err));
 
 app.set("view-engine", "ejs");
-app.use(express.static(path.join(__dirname + '/./public')));
 
 // =============== MIDDLEWARE / ROUTES ==============================
+app.use(express.static(path.join(__dirname + '/./public')));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use("/blogs", blogRoutes);

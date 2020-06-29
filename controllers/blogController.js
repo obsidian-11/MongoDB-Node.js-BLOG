@@ -1,4 +1,5 @@
-
+const mongoose = require('mongoose');
+const Blog = require('../models/Blog');
 
 const blog_index = (req, res) => {
     res.render("blogs.ejs", {
@@ -14,8 +15,22 @@ const blog_create_get = (req, res) => {
     });
 }
 
+const blog_create_post = (req, res) => {
+    const { title, snippet, body } = req.body;
+    const newBlog = new Blog({
+        title,
+        snippet,
+        body
+    });
+    newBlog.save((err, doc) => {
+        if (err) throw err;
+        console.log(doc);
+        res.redirect('/blogs')
+    });
+}
 
 module.exports = {
     blog_index,
-    blog_create_get
+    blog_create_get,
+    blog_create_post
 }
