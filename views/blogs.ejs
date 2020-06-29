@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partials/head') %>
+  <%- include('./partials/head') %>
 
-<body>
-  <div class="container">
-    <%- include('./partials/blogHeader') %>
-    <% if(blogs.length > 0){ %>
-    <% for (let index = 0; index < blogs.length; index++) { %>
-    <div class="blog">
-      <div class="blog-title">
-        <%= blogs[index].title %>
+  <body>
+    <div class="container">
+      <%- include('./partials/blogHeader') %> <% if(blogs.length > 0){ %> <% for
+      (let index = 0; index < blogs.length; index++) { %>
+      <div class="blog">
+        <div class="blog-title">
+          <%= blogs[index].title %>
+        </div>
+        <div class="blog-date">
+          <%= blogs[index].timestamp.toDateString() %>
+        </div>
+        <div class="blog-snippet">
+          <%= blogs[index].snippet %>
+        </div>
+        <a href="/blogs/<%= blogs[index].id %> " class="read-more-link"
+          >Read more</a
+        >
+        <a data-blog-id="<%= blogs[index].id %>" class="delete-blog-link"
+          ><img src="../media/trash.svg" alt=""
+        /></a>
       </div>
-      <div class="blog-snippet">
-        <%= blogs[index].snippet %>
-      </div>
-      <a href="/blogs/<%= blogs[index].id %> " class="read-more-link">Read more</a>
-      <a data-blog-id="<%= blogs[index].id %>" class="delete-blog-link"><img src="../media/trash.svg" alt=""></a>
+      <% } %> <% } else{ %>
+      <p class="no-blogs">
+        <%= 'There are no blogs available. Create a blog now.' %>
+      </p>
+      <% } %>
     </div>
-    <% } %>
-    <% } else{ %>
-    <p class="no-blogs"><%= 'There are no blogs available. Create a blog now.' %></p>
-    <% } %>
-  </div>
 
-  <script>
+    <script>
+      const deleteBtn = document.querySelectorAll(".delete-blog-link");
+      deleteBtn.forEach((btn) => {
+        btn.addEventListener("click", deleteBlog);
+      });
 
-    const deleteBtn = document.querySelectorAll('.delete-blog-link');
-    deleteBtn.forEach(btn => {
-      btn.addEventListener('click', deleteBlog);
-    })
+      async function deleteBlog(e) {
+        const blogId = e.target.getAttribute("data-blog-id");
+        const endpoint = `/blogs/${blogId}`;
 
-    async function deleteBlog(e) {
-      const blogId = e.target.getAttribute('data-blog-id');
-      const endpoint = `/blogs/${blogId}`;
-
-      await fetch(endpoint, {
-        method: 'DELETE'
-      })
-        .then((res) => res.json()).then(() => {
-          window.location.href = '../'; //one level up
+        await fetch(endpoint, {
+          method: "DELETE",
         })
-        .catch(err => console.log(err));
-    }
-
-  </script>
-</body>
-
+          .then((res) => res.json())
+          .then(() => {
+            window.location.href = "../"; //one level up
+          })
+          .catch((err) => console.log(err));
+      }
+    </script>
+  </body>
 </html>
