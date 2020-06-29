@@ -1,19 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const blogController = require('../controllers/blogController');
 
-router.get("/", (req, res) => {
-  res.render("blogs.ejs", {
-    title: '| Home',
-    page_name: 'blogs-home'
-  });
-});
+router.get("/", blogController.blog_index);
 
-router.get("/create", (req, res) => {
-  res.render("createBlog.ejs", {
-    title: '| Create new blog',
-    page_name: 'blogs-create'
-  });
-});
+router.get("/create", blogController.blog_create_get);
 
 module.exports = router;
 

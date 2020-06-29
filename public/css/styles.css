@@ -94,7 +94,7 @@ li.current-page a {
   font-weight: 300;
   text-transform: uppercase;
   font-size: 2.1rem;
-  padding: 0.5em 0;
+  margin: 0.5em 0;
 }
 
 .create-blog-form input, .create-blog-form textarea {
