@@ -39,11 +39,11 @@ header {
 
 header .logo {
   font-size: 2.6rem;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 header .logo a {
-  color: #161255;
+  color: #1db1a4;
 }
 
 header ul {
@@ -162,7 +162,7 @@ li.current-page a {
       -ms-flex-align: center;
           align-items: center;
   padding: .5em;
-  border-radius: 50px;
+  border-radius: 5px;
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -182,5 +182,23 @@ li.current-page a {
   font-family: 'Poppins', sans-serif;
   text-align: center;
   margin: 5em 0 0 0;
+}
+
+.blog-post {
+  font-family: 'Poppins', sans-serif;
+  margin: 3.5em auto;
+  max-width: 75%;
+}
+
+.blog-post h1 {
+  font-weight: 300;
+  font-size: 2rem;
+  padding: 0.2em 1em;
+  margin: 1em 0;
+  border-left: 4px solid #1db1a4;
+}
+
+.blog-post p {
+  text-align: justify;
 }
 /*# sourceMappingURL=styles.css.map */

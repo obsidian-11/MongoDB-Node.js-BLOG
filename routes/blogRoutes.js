@@ -10,4 +10,6 @@ router.post('/create', blogController.blog_create_post);
 
 router.delete('/:id', blogController.blog_delete);
 
+router.get(('/:id'), blogController.blog_details);
+
 module.exports = router;
