@@ -28,12 +28,23 @@ const blog_create_post = (req, res) => {
     });
     newBlog.save((err, doc) => {
         if (err) throw err;
-        res.redirect('/blogs')
+        res.redirect('/blogs');
+    });
+}
+
+const blog_delete = (req, res) => {
+    const blogId = req.params.id;
+    Blog.deleteOne({ _id: blogId }, (err) => {
+        if (err) throw err;
+    })
+    res.json({
+        location: '/blogs'
     });
 }
 
 module.exports = {
     blog_index,
     blog_create_get,
-    blog_create_post
+    blog_create_post,
+    blog_delete
 }

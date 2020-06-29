@@ -85,10 +85,60 @@ li.current-page a{
   }
   .form-submit{
     border: none;
-    background: #2030bb;
+    background: #1db1a4;
     color: white;
     font-weight: 300;
     text-transform: uppercase;
     border-radius: 2px;
   }
+}
+
+.blog{
+  padding: 0.1em 1.5em;
+  max-width: 75%;
+  margin: 3.5em auto;
+  border-left: 4px solid #1db1a4;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  position: relative;
+  .blog-title{
+    font-size: 2rem;
+    font-weight: 300;
+  }
+  .blog-snippet{
+    color: rgb(117, 117, 117);
+  }
+  .read-more-link{
+    background: #1db1a4;
+    color: white;
+    padding: 0.4em 1em;
+    font-size: 0.9em;
+    margin: 1em 0;
+    border-radius: 5px;
+  }
+}
+
+.delete-blog-link{
+  background: rgb(199, 64, 64);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5em;
+  border-radius: 50px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  img{
+    width: 18px;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+.no-blogs{
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin: 5em 0 0 0;
 }

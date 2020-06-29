@@ -15,12 +15,35 @@
         <%= blogs[index].snippet %>
       </div>
       <a href="/blogs/<%= blogs[index].id %> " class="read-more-link">Read more</a>
+      <a data-blog-id="<%= blogs[index].id %>" class="delete-blog-link"><img src="../media/trash.svg" alt=""></a>
     </div>
     <% } %>
     <% } else{ %>
-    <%= 'NO BLOGS AVAILABLE' %>
+    <p class="no-blogs"><%= 'There are no blogs available. Create a blog now.' %></p>
     <% } %>
   </div>
+
+  <script>
+
+    const deleteBtn = document.querySelectorAll('.delete-blog-link');
+    deleteBtn.forEach(btn => {
+      btn.addEventListener('click', deleteBlog);
+    })
+
+    async function deleteBlog(e) {
+      const blogId = e.target.getAttribute('data-blog-id');
+      const endpoint = `/blogs/${blogId}`;
+
+      await fetch(endpoint, {
+        method: 'DELETE'
+      })
+        .then((res) => res.json()).then(() => {
+          window.location.href = '../'; //one level up
+        })
+        .catch(err => console.log(err));
+    }
+
+  </script>
 </body>
 
 </html>
